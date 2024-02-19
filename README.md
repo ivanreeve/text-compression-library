@@ -20,6 +20,8 @@ To use this library in your C++ project, follow these steps:
 
 ## Functions
 
+### Compression
+
 ```cpp
 huffmanlib::compress(string& filename): bool : <filename>.compressed.huffman
 ```
@@ -29,6 +31,9 @@ Takes a string ```filename``` as a parameter. Returns true if the compression is
 Assumes that the filename has ```.txt``` file extension omitted. For example, if the file name is ```sample.txt```, the input should be ```sample```. 
 
 Appends ```.compressed.huffman``` file extension to the compressed file.
+
+
+### Decompression
 
 ```cpp
 huffmanlib::decompress(string& filename): bool : <filename>.decompressed.txt
