@@ -2,12 +2,11 @@
 #include <string>
 #include <fstream>
 #include <bitset>
-#include <iostream>
 
 #define BYTE_LENGTH 8
+#define EMPTY '\0'
 #define INPUT_FILENAME_EXTENSION ".txt"
-#define COMPRESSED_OUTPUT_FILENAME_EXTENSION "_compressed.huffman"
-#define DECOMPRESSED_OUTPUT_FILENAME_EXTENSION "_decompressed.txt"
+#define COMPRESSED_OUTPUT_FILENAME_EXTENSION ".huffman"
 
 using namespace std;
 
@@ -33,6 +32,12 @@ typedef struct priorityQueueNode {
     priorityQueueNode* next;
 
     priorityQueueNode(HUFFMAN_NODE* n) : node(n), next(nullptr){}
+    ~priorityQueueNode() {
+        if (node != nullptr) {
+            delete node;
+            node = nullptr;
+        }
+    }
 
 } PRIORITY_QUEUE_NODE;
 
@@ -138,6 +143,7 @@ class HuffmanTree {
     private:
         HUFFMAN_NODE* root;
         size_t numLeaf, numChar; //Metadata
+        size_t charCount, bitstreamIndex;
         string serializedHuffmanTree, bitstream;
         unordered_map<char, string> huffmanData;
 
@@ -146,10 +152,10 @@ class HuffmanTree {
         void serializeHuffmanTree(HUFFMAN_NODE* currentNode);
         HUFFMAN_NODE* deserializeHuffmanTree(size_t& i);
         void generateBitstream(const string& filename);
-        void decodeBitstream(ofstream& outputFileStream, HUFFMAN_NODE* node, size_t& charCount, size_t& bitstreamIndex);
+        void decodeBitstream(ofstream& outputFileStream);
 
     public:
-        HuffmanTree(): serializedHuffmanTree(""), bitstream(""), numLeaf(0), numChar(0) {}
+        HuffmanTree(): serializedHuffmanTree(""), bitstream(""), numLeaf(0), numChar(0), charCount(0), bitstreamIndex(0) {}
         void buildHuffmanTree(PriorityQueue& PQ, const string& filename);
         void buildHuffmanTree(const string& filename);
         void saveCompressedData(const string& filename);
@@ -163,7 +169,7 @@ bool HuffmanTree::isEmpty(){
 
 void HuffmanTree::generateHuffmanData(HUFFMAN_NODE* currentNode, string binaryString){
     if (currentNode != nullptr){
-        if (currentNode->character == '\0'){
+        if (currentNode->character == EMPTY){
             generateHuffmanData(currentNode->left, binaryString + "0");
             generateHuffmanData(currentNode->right, binaryString + "1");
         }
@@ -183,7 +189,7 @@ void HuffmanTree::buildHuffmanTree(PriorityQueue& PQ, const string& filename){
         frontNode = PQ.getFrontNode();
         PRIORITY_QUEUE_NODE* secondNode = PQ.dequeue(frontNode, frontNode);
 
-        HUFFMAN_NODE* combinedNode = new HUFFMAN_NODE('\0');
+        HUFFMAN_NODE* combinedNode = new HUFFMAN_NODE(EMPTY);
         combinedNode->frequency = firstNode->node->frequency + secondNode->node->frequency;
         combinedNode->left = firstNode->node;
         combinedNode->right = secondNode->node;
@@ -236,38 +242,26 @@ void HuffmanTree::buildHuffmanTree(const string& filename){
 }
 
 void HuffmanTree::saveDecompressedData(const string& filename){
-//decode bitstream
-    ofstream outputFileStream(filename+DECOMPRESSED_OUTPUT_FILENAME_EXTENSION);
-    size_t charCount, bitstreamIndex;
+    ofstream outputFileStream(filename+INPUT_FILENAME_EXTENSION);
 
-    charCount = 0;
-    bitstreamIndex = 0;
-
-    decodeBitstream(outputFileStream, root, charCount, bitstreamIndex);
+    decodeBitstream(outputFileStream);
     outputFileStream.close();
     return;
 }
 
-void HuffmanTree::decodeBitstream(ofstream& outputFileStream, HUFFMAN_NODE* node, size_t& charCount, size_t& bitstreamIndex) {
-    if (charCount >= numChar) return;
-
-    if (node->character == '\0') {
-        if (bitstream[bitstreamIndex] == '1') {
+void HuffmanTree::decodeBitstream(ofstream& outputFileStream) {
+    HUFFMAN_NODE* node = root;
+    while (charCount < numChar) {
+        if (node->character == EMPTY) {
+            if (bitstream[bitstreamIndex] == '1') node = node->right;
+            else node = node->left;
             bitstreamIndex++;
-            decodeBitstream(outputFileStream, node->right, charCount, bitstreamIndex);
-        }
-        else {
-            bitstreamIndex++;
-            decodeBitstream(outputFileStream, node->left, charCount, bitstreamIndex);
+        } else {
+            outputFileStream << node->character;
+            charCount++;
+            node = root;
         }
     }
-    else {
-        outputFileStream << node->character;
-        charCount++;
-        decodeBitstream(outputFileStream, root, charCount, bitstreamIndex);
-    }
-
-    return;
 }
 
 HUFFMAN_NODE* HuffmanTree::deserializeHuffmanTree(size_t& i){
@@ -279,7 +273,7 @@ HUFFMAN_NODE* HuffmanTree::deserializeHuffmanTree(size_t& i){
         i++;
         return new HUFFMAN_NODE(serializedHuffmanTree[i]);
     } else {// Not Leaf
-        HUFFMAN_NODE* newNode = new HUFFMAN_NODE('\0');
+        HUFFMAN_NODE* newNode = new HUFFMAN_NODE(EMPTY);
         i++;
         newNode->left = deserializeHuffmanTree(i);
         i++;
@@ -306,20 +300,14 @@ void HuffmanTree::saveCompressedData(const string& filename){
         byteValue = static_cast<uint8_t>(bitset<BYTE_LENGTH>(byteString).to_ulong());
         outputFileStream.write(reinterpret_cast<const char*>(&byteValue), sizeof(uint8_t));
     }
-    cout << numChar << " " << numLeaf;
 
     outputFileStream.close();
-
-    for (const auto& pair : huffmanData) {
-        cout << pair.first << ": " << pair.second << std::endl;
-    }
-    cout << "Bitstream: " << bitstream;
     return;
 }
 
 void HuffmanTree::serializeHuffmanTree(HUFFMAN_NODE* currentNode){
     if (currentNode != nullptr) {
-        if (currentNode->character == '\0') {
+        if (currentNode->character == EMPTY) {
             serializedHuffmanTree += "0";
             serializeHuffmanTree(currentNode->left);
             serializeHuffmanTree(currentNode->right);
