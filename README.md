@@ -6,6 +6,12 @@ This project was made as a part of my Sophomore year 1st semester final project 
 
 ## Features
 
+### Supports Large Files
+
+The library can handle large files (10,000,000,000+ characters) surprisingly well. 
+
+Larger files may take longer time to finish. 
+
 ### Compression Ratio
 
 The Huffman text compression algorithm employed by this library aims to achieve significant reduction in file size while maintaining lossless data compression. While the actual compression ratio may vary depending on factors such as the content and structure of the input text files, tests have shown that the compression ratio can reach up to 50%. 
