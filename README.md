@@ -27,10 +27,10 @@ using namespace huffmanlib;
 
 int main() {
     // Compress a text file
-    compress("input.txt");
+    compress("input");
 
     // Decompress a compressed file
-    decompress("compressed.huffman");
+    decompress("compressed");
 
     return 0;
 }
