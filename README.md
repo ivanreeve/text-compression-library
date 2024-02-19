@@ -1,6 +1,8 @@
 # Huffman Text Compression Library
 
-This is a C++ library for Huffman text compression and decompression algorithm.
+A C++ library for Huffman compression and decompression algorithm. Only works for text files.
+
+This project was made as a part of my Sophomore year 1st semester final project in Data Structures and Algorithms. The project initially consisted of two separate files and was later combined into a single library.
 
 ## Features
 
@@ -28,7 +30,7 @@ Takes a string ```filename``` as a parameter. Returns true if the compression is
 huffmanlib::decompress(string& filename): bool : <filename>.decompressed.txt
 ```
 
-Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. Assumes that the filename has ```".huffman"``` file extension omitted. For example, if the file name is "sample.txt.compressed.huffman", the input should be "sample.txt.compressed". Appends ```".decompressed.txt"``` file extension to the decompressed file.
+Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. Assumes that the filename has ```".huffman"``` file extension omitted. For example, if the file name is ```"sample.txt.compressed.huffman"```, the input should be "sample.txt.compressed". Appends ```".decompressed.txt"``` file extension to the decompressed file.
 
 ## Usage
 
@@ -50,7 +52,11 @@ int main() {
 }
 ```
 
-For more information, see the [official documentation](https://example.com/docs).
+## Additional Notes
+
+What is [Huffman Encoding](https://en.wikipedia.org/wiki/Huffman_coding)?.
+
+The storage format for compression was also inspired from Lasse V. Karlsen's [proposal](https://stackoverflow.com/questions/759707/efficient-way-of-storing-huffman-tree?fbclid=IwAR0QrUItpdWaI34hHisM8a8z5jzmsLLJYfdOQWALTJpEvINvc8ZGByCE-lU)(check his answer in the thread).
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
