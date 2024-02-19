@@ -16,7 +16,7 @@ Larger files may take longer time to finish.
 
 The Huffman text compression algorithm employed by this library aims to achieve significant reduction in file size while maintaining lossless data compression. While the actual compression ratio may vary depending on factors such as the content and structure of the input text files, tests have shown that the compression ratio can reach up to 50%.
 
-[sample](sample.png)
+![sample](sample.png)
 
 ## Getting Started
 
