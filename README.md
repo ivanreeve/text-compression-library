@@ -24,13 +24,21 @@ To use this library in your C++ project, follow these steps:
 huffmanlib::compress(string& filename): bool : <filename>.compressed.huffman
 ```
 
-Takes a string ```filename``` as a parameter. Returns true if the compression is successful. Assumes that the filename has ```.txt``` file extension omitted. For example, if the file name is ```sample.txt```, the input should be ```sample```. Appends ```.compressed.huffman``` file extension to the compressed file.
+Takes a string ```filename``` as a parameter. Returns true if the compression is successful. 
+
+Assumes that the filename has ```.txt``` file extension omitted. For example, if the file name is ```sample.txt```, the input should be ```sample```. 
+
+Appends ```.compressed.huffman``` file extension to the compressed file.
 
 ```cpp
 huffmanlib::decompress(string& filename): bool : <filename>.decompressed.txt
 ```
 
-Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. Assumes that the filename has ```.huffman``` file extension omitted. For example, if the file name is ```sample.txt.compressed.huffman```, the input should be ```sample.txt.compressed```. Appends ```.decompressed.txt``` file extension to the decompressed file.
+Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. 
+
+Assumes that the filename has ```.huffman``` file extension omitted. For example, if the file name is ```sample.txt.compressed.huffman```, the input should be ```sample.txt.compressed```. 
+
+Appends ```.decompressed.txt``` file extension to the decompressed file.
 
 ## Usage
 
@@ -54,9 +62,9 @@ int main() {
 
 ## Additional Notes
 
-What is [Huffman Encoding](https://en.wikipedia.org/wiki/Huffman_coding)?.
+📝 What is [Huffman Encoding](https://en.wikipedia.org/wiki/Huffman_coding)?.
 
-The storage format for compression was also inspired by Lasse V. Karlsen's [proposal](https://stackoverflow.com/questions/759707/efficient-way-of-storing-huffman-tree?fbclid=IwAR0QrUItpdWaI34hHisM8a8z5jzmsLLJYfdOQWALTJpEvINvc8ZGByCE-lU).
+📝 The storage format for compression was also inspired by Lasse V. Karlsen's [proposal](https://stackoverflow.com/questions/759707/efficient-way-of-storing-huffman-tree?fbclid=IwAR0QrUItpdWaI34hHisM8a8z5jzmsLLJYfdOQWALTJpEvINvc8ZGByCE-lU).
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
