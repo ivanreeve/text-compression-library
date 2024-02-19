@@ -56,7 +56,7 @@ int main() {
 
 What is [Huffman Encoding](https://en.wikipedia.org/wiki/Huffman_coding)?.
 
-The storage format for compression was also inspired from Lasse V. Karlsen's [proposal](https://stackoverflow.com/questions/759707/efficient-way-of-storing-huffman-tree?fbclid=IwAR0QrUItpdWaI34hHisM8a8z5jzmsLLJYfdOQWALTJpEvINvc8ZGByCE-lU) (check his answer in the thread).
+The storage format for compression was also inspired by Lasse V. Karlsen's [proposal](https://stackoverflow.com/questions/759707/efficient-way-of-storing-huffman-tree?fbclid=IwAR0QrUItpdWaI34hHisM8a8z5jzmsLLJYfdOQWALTJpEvINvc8ZGByCE-lU) (check his answer in the thread).
 
 ## License
 This project is licensed under the [MIT License](LICENSE).
