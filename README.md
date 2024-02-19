@@ -24,19 +24,19 @@ To use this library in your C++ project, follow these steps:
 huffmanlib::compress(string& filename): bool : <filename>.compressed.huffman
 ```
 
-Takes a string ```filename``` as a parameter. Returns true if the compression is successful. Assumes that the filename has ```".txt"``` file extension omitted. For example, if the file name is ```"sample.txt"```, the input should be "sample". Appends ```".compressed.huffman"``` file extension to the compressed file.
+Takes a string ```filename``` as a parameter. Returns true if the compression is successful. Assumes that the filename has ```.txt``` file extension omitted. For example, if the file name is ```sample.txt```, the input should be ```sample```. Appends ```.compressed.huffman``` file extension to the compressed file.
 
 ```cpp
 huffmanlib::decompress(string& filename): bool : <filename>.decompressed.txt
 ```
 
-Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. Assumes that the filename has ```".huffman"``` file extension omitted. For example, if the file name is ```"sample.txt.compressed.huffman"```, the input should be "sample.txt.compressed". Appends ```".decompressed.txt"``` file extension to the decompressed file.
+Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. Assumes that the filename has ```.huffman``` file extension omitted. For example, if the file name is ```sample.txt.compressed.huffman```, the input should be ```sample.txt.compressed```. Appends ```.decompressed.txt``` file extension to the decompressed file.
 
 ## Usage
 
 ```cpp
 #include <iostream>
-#include "huffman.h"
+#include "huffman.h" // Import the library
 
 using namespace std;
 using namespace huffmanlib;
