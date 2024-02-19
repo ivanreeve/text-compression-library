@@ -31,7 +31,7 @@ To use this library in your C++ project, follow these steps:
 ### Compression
 
 ```cpp
-huffmanlib::compress(string& filename): bool : <filename>.compressed.huffman
+bool huffmanlib::compress(string& filename): <filename>.compressed.huffman
 ```
 
 Takes a string ```filename``` as a parameter. Returns true if the compression is successful. 
@@ -44,7 +44,7 @@ Appends ```.compressed.huffman``` file extension to the compressed file.
 ### Decompression
 
 ```cpp
-huffmanlib::decompress(string& filename): bool : <filename>.decompressed.txt
+bool huffmanlib::decompress(string& filename): <filename>.decompressed.txt
 ```
 
 Takes a string ```filename``` as a parameter. Returns true if the decompression is successful. 
