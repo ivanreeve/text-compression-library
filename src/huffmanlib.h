@@ -57,18 +57,10 @@ class PriorityQueue {
             }
             inputFileStream.close();
         }
-        ~PriorityQueue() {
-            PRIORITY_QUEUE_NODE* temp;
-            while (frontNode != nullptr) {
-                temp = frontNode;
-                frontNode = frontNode->next;
-                delete temp;
-            }
-        }
+
         void enqueue(PRIORITY_QUEUE_NODE* newNode);
         PRIORITY_QUEUE_NODE* dequeue(PRIORITY_QUEUE_NODE* lastNode, PRIORITY_QUEUE_NODE* currentNode);
         PRIORITY_QUEUE_NODE* getFrontNode();
-        //destructor will be added later
 };
 
 bool PriorityQueue::isEmpty(){
@@ -118,7 +110,6 @@ void PriorityQueue::registerCharacter(char c){
                 Then increase its frequency and recalculate its position.
                 NOTE: recalculation happens in enqueue()
             */
-
             PRIORITY_QUEUE_NODE* d = dequeue(lastNode, currentNode);
             d->node->frequency++;
             enqueue(d);
@@ -156,11 +147,11 @@ class HuffmanTree {
 
     public:
         HuffmanTree(): serializedHuffmanTree(""), bitstream(""), numLeaf(0), numChar(0), charCount(0), bitstreamIndex(0) {}
+
         void buildHuffmanTree(PriorityQueue& PQ, const string& filename);
         void buildHuffmanTree(const string& filename);
         void saveCompressedData(const string& filename);
         void saveDecompressedData(const string& filename);
-        //destructor to be added later
 };
 
 bool HuffmanTree::isEmpty(){
