@@ -8,7 +8,7 @@ This project was made as a part of my Sophomore year 1st semester final project 
 
 ### Supports Large Files
 
-The library can handle large files (10,000,000,000+ characters) surprisingly well. 
+The library can handle large files (10,000,000+ characters) surprisingly well. 
 
 Larger files may take longer time to finish. 
 
