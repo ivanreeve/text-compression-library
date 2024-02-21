@@ -57,7 +57,7 @@ Appends ```.decompressed.txt``` file extension to the decompressed file.
 
 ```cpp
 #include <iostream>
-#include "huffman.h" // Import the library
+#include "huffmanlib.h" // Import the library
 
 using namespace std;
 using namespace huffmanlib;
