@@ -2,7 +2,6 @@
 #include <string>
 #include <fstream>
 #include <bitset>
-#include <memory>
 
 #define BYTE_LENGTH 8
 #define EMPTY '\0'
