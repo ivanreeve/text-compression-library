@@ -26,7 +26,7 @@ To use this library in your C++ project, follow these steps:
 2. Include the necessary files in your project. Make sure that the header file is in the appropriate folder location.
 3. Use the provided functions for compression and decompression.
 
-## Functions
+## Interface
 
 ### Compression
 
