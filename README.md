@@ -1,18 +1,16 @@
 # Huffman Text Compression Library
 
-This C++ library is my own implementation of Huffman compression and decompression algorithm. Only works for text files.
+A C++ library that uses Huffman algorithm for text compression and decompression. Exclusive for text files.
 
-This project was made as a part of my sophomore year 1st semester final project in Data Structures and Algorithms. The project initially consisted of two separate files and was later combined into a single library.
+This project was made as a part of my sophomore year 1st semester final project in Data Structures and Algorithms. The project initially consisted of monolith functions that was later converted to a library.
 
 ## Features
 
-### Supports Large Files
+### Supports large files while being performant
 
-The library can handle large files (tested with 10,000,000+ characters).
+Profiling result shows sub 1000ms processing speed for up to 10 million characters.
 
-Larger files may take longer time to finish. 
-
-### Up to 50% Compression Ratio
+### Compression ratio reaches up to 50%
 
 The Huffman text compression algorithm employed by this library aims to achieve significant reduction in file size while maintaining lossless data compression. While the actual compression ratio may vary depending on factors such as the content and structure of the input text files, tests have shown that the compression ratio can reach up to 50%.
 
