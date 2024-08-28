@@ -1,6 +1,6 @@
 # Huffman Text Compression Library
 
-A C++ library that uses Huffman algorithm for text compression and decompression. Exclusive for text files.
+A C++ library that implement Huffman algorithm for text compression and decompression. Exclusive for text files.
 
 This project was made as a part of my sophomore year 1st semester final project in Data Structures and Algorithms. The project initially consisted of monolith functions that was later converted to a library.
 
