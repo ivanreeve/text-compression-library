@@ -1,5 +1,14 @@
 # Huffman Text Compression Library
 
+<div align="center">
+
+![stars](https://img.shields.io/github/stars/ivanreeve/text-compression-library)
+![watchers](https://img.shields.io/github/watchers/ivanreeve/text-compression-library)
+![contributors](https://img.shields.io/github/contributors/ivanreeve/text-compression-library)
+![commits](https://img.shields.io/github/commit-activity/w/ivanreeve/text-compression-library/main)
+
+</div>
+
 A C++ library that implements Huffman algorithm for text compression and decompression. Exclusive for text files.
 
 This project was made as a part of my sophomore year 1st semester final project in Data Structures and Algorithms. The project initially consisted of monolith functions that was later converted to a library.
